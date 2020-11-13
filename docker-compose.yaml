@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+  proxy:
+    image: nginx:latest
+    volumes:
+      - ./proxy:/etc/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - front
+      - back
+    networks:
+      - django-vue
+
+  front:
+    build:
+      context: ./vue
+    container_name: front
+    ports:
+      - "8080:8080"
+    depends_on:
+      - back
+    networks:
+      - django-vue
+
+  back:
+    build:
+      context: ./django
+    volumes:
+      - ./django:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - django-vue
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    expose:
+      - "5432"
+
+volumes:
+  postgres_data:
+
+networks:
+  django-vue:
