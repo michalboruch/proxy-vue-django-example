@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img class="page-img" alt="foo art" src="./assets/vd.png">
+  <h1>Vue 3 and HTTP Fetch Example</h1>
+  <Foo />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Foo from './components/Foo.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Foo
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.page-img {
+  width: 100%;
 }
 </style>
