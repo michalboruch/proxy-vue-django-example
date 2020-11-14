@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     fetchFoo() {
-      return fetch('http://localhost/api/foo/', {
+      return fetch('http://vue-django.com/api/foo/', {
         method: 'get',
         headers: {
         'content-type': 'application/json'
