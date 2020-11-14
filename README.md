@@ -3,6 +3,8 @@
 
 # VUE 3 and Django Integration Example
 
+This is raw and imperfect, don't try it at home.
+
 1. Add vue-django.com to the `etc/hosts` (map to localhost)
 2. Run with `docker-compose up --build`
 3. Go to http://vue-django.com
