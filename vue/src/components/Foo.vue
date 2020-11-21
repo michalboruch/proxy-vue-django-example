@@ -17,7 +17,7 @@ export default {
   methods: {
     getFoo() {
       let self = this;
-      axios.get('http://vue-django.com/api/foo/')
+      axios.get('http://vue-django.com/api/v1/foo/')
       .then(function (response) {
         self.foo = response.data;
       })
