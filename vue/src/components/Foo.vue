@@ -1,9 +1,11 @@
 <template>
-  <button @click="fetchFoo">GET foo!</button>
+  <button @click="getFoo">GET foo!</button>
   <p><b>FOO is: </b>{{ foo.foo }}</p>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Foo',
   props: {},
@@ -13,28 +15,14 @@ export default {
     }
   },
   methods: {
-    fetchFoo() {
-      return fetch('http://vue-django.com/api/foo/', {
-        method: 'get',
-        headers: {
-        'content-type': 'application/json'
-        }
+    getFoo() {
+      let self = this;
+      axios.get('http://vue-django.com/api/foo/')
+      .then(function (response) {
+        self.foo = response.data;
       })
-      .then(res => {
-        // a non-200 response code
-        if (!res.ok) {
-          // create error instance with HTTP status text
-          const error = new Error(res.statusText);
-          error.json = res.json();
-          throw error;
-        }
-        return res.json();
-      })
-      .then(json => {
-        this.foo = json;
-      })
-      .catch(err => {
-        console.log('err: ', err);
+      .catch(function (error) {
+        console.log(error);
       });
     }
   }

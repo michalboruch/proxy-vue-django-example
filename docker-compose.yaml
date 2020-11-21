@@ -3,7 +3,7 @@ version: '3.7'
 services:
   proxy:
     image: nginx:latest
-    container_name: proxy
+    container_name: vd-proxy
     volumes:
       - ./proxy:/etc/nginx
     ports:
@@ -18,7 +18,7 @@ services:
   front:
     build:
       context: ./vue
-    container_name: front
+    container_name: vd-front
     volumes:
       - ./vue/src:/app/src
     ports:
@@ -31,7 +31,7 @@ services:
   back:
     build:
       context: ./django
-    container_name: back
+    container_name: vd-back
     volumes:
       - ./django:/usr/src/app
     ports:
@@ -43,7 +43,7 @@ services:
 
   db:
     image: postgres:13
-    container_name: db
+    container_name: vd-db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:

@@ -1,6 +1,5 @@
 <template>
-  <img class="page-img" alt="foo art" src="./assets/vd.png">
-  <h1>Vue 3 and HTTP Fetch Example</h1>
+  <h1>Vue 3 and axios Example</h1>
   <Foo />
 </template>
 
